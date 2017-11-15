@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coordinate_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="bornbaby.materialdesign.MainActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <Button
+            android:id="@+id/btn_click"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
+            android:text="@string/button"
+            android:theme="@style/MyButton" />
+
+        <Button
+            android:id="@+id/btn_boarderless"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
+            android:layout_toEndOf="@+id/btn_click"
+            android:layout_toRightOf="@+id/btn_click"
+            android:text="@string/button"
+            android:theme="@style/MyButtonBoarderLess" />
+
+        <Button
+            android:id="@+id/btn_normal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+
+            android:layout_marginStart="15dp"
+            android:layout_toEndOf="@+id/btn_boarderless"
+            android:layout_toRightOf="@+id/btn_boarderless"
+            android:text="@string/button" />
+
+        <AutoCompleteTextView
+            android:id="@+id/autocompleteView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btn_click"
+            android:layout_marginLeft="5dp"
+            android:hint="Search dogs..."
+            android:theme="@style/Autocomplete" />
+
+
+        <TextView
+            android:id="@+id/tv_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/autocompleteView"
+            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:text="@string/female_icon"
+            android:textSize="18sp" />
+
+    </RelativeLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floatin_action_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:elevation="20dp"
+        app:rippleColor="@color/indigo" />
+
+    <android.support.design.internal.BottomNavigationItemView
+        android:id="@+id/bottom_navigtion_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:menu="@menu/bottom_navigation_menu"
+        android:layout_gravity="bottom">
+
+    </android.support.design.internal.BottomNavigationItemView>
+</android.support.design.widget.CoordinatorLayout>
