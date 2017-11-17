@@ -20,6 +20,8 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
 import bornbaby.materialdesign.R;
 import bornbaby.materialdesign.Utils.ApiConfiguration;
@@ -39,6 +41,10 @@ public class RecyclerViewActivity extends BaseActivity implements JSONResult {
 
     private AlbumsAdapter albumsAdapter;
 
+
+
+
+
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +56,13 @@ public class RecyclerViewActivity extends BaseActivity implements JSONResult {
         initCollapsingToolbar();
         getPictures();
         getWeatherData();
+
+
+       /* Locale[] availableLocales = Locale.getAvailableLocales();
+        List<String> locales = new ArrayList<>();
+        for (Locale locale : availableLocales) {
+            locales.add(locale.getDisplayName());
+        }*/
 
 
 
