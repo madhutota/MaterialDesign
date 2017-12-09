@@ -90,12 +90,14 @@ public class CustomDialog {
         tvProgressMessage.setText("Loading Please Wait....");
         tvProgressMessage.setVisibility(View.VISIBLE);
 
-        if (baseActivity.progressDialog != null) {
-            baseActivity.progressDialog.dismiss();
-            baseActivity.progressDialog = null;
+     // Dialog  progressDialog= null;
+
+        if (baseActivity.mDialog != null) {
+            baseActivity.mDialog.dismiss();
+            baseActivity.mDialog = null;
         }
 
-        baseActivity.progressDialog = mDialog;
+        baseActivity.mDialog = mDialog;
 
         mDialog.setCancelable(cancelable);
         mDialog.setCanceledOnTouchOutside(cancelable);
@@ -106,7 +108,7 @@ public class CustomDialog {
 
     /*HIDE THE PROGRESS DIALOG*/
     public static void hideProgressBar(BaseActivity parent) {
-        if (parent.progressDialog != null)
-            parent.progressDialog.dismiss();
+        if (parent.mDialog != null)
+            parent.mDialog.dismiss();
     }
 }

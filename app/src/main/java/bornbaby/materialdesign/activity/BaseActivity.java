@@ -14,7 +14,7 @@ import android.widget.EditText;
  */
 
 public class BaseActivity extends AppCompatActivity {
-    public Dialog progressDialog = null;
+    public Dialog  mDialog = null;
 
 
 
