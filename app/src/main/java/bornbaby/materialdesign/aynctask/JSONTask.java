@@ -60,10 +60,13 @@ public class JSONTask extends AsyncTask<Object, Integer, Object> {
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
+
+
     }
 
     public void execute() {
         super.executeOnExecutor(THREAD_POOL_EXECUTOR);
+        CustomDialog.showProgressDialog(parent, false);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -219,6 +222,7 @@ public class JSONTask extends AsyncTask<Object, Integer, Object> {
     @Override
     protected void onPostExecute(Object result) {
         super.onPostExecute(result);
+        CustomDialog.hideProgressBar(parent);
 
          /*
          *CALLS  "RUN_JSON_RESULT" IF ORIGINAL ACTIVITY IS STILL FOCUSED
@@ -228,8 +232,10 @@ public class JSONTask extends AsyncTask<Object, Integer, Object> {
             //NetworkUtils.showNetworkConnectDialog(parent, true);
         } else if (activity != null && result != null) {
             activity.successJSONResult(CODE, result);
-        } else
+        } else{
+            CustomDialog.hideProgressBar(parent);
             activity.failedJSONResult(CODE);
+        }
 
     }
 
@@ -250,6 +256,7 @@ public class JSONTask extends AsyncTask<Object, Integer, Object> {
         }
         return result.toString();
     }
+
     /*
     * SET THE HEADER AS A MAP VALUES
     * */

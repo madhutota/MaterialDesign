@@ -1,5 +1,6 @@
 package bornbaby.materialdesign.activity;
 
+import android.app.Dialog;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
@@ -13,6 +14,7 @@ import android.widget.EditText;
  */
 
 public class BaseActivity extends AppCompatActivity {
+    public Dialog progressDialog = null;
 
 
 

@@ -2,6 +2,7 @@ package bornbaby.materialdesign.swiperefresh;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -11,6 +12,7 @@ import bornbaby.materialdesign.model.Album;
 
 public class SwipeRefreshActivity extends AppCompatActivity {
 
+    private static final String TAG = SwipeRefreshActivity.class.getSimpleName();
     private ArrayList<Album> albumList;
 
     private ListView listview;
@@ -19,9 +21,40 @@ public class SwipeRefreshActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_swipe_refresh);
-
+        Log.e(TAG, "onCreate2");
         inITUI();
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.e(TAG, "onStart2");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.e(TAG, "onResume2");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.e(TAG, "onPause2");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.e(TAG, "onStop2");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.e(TAG, "onRestart2");
+    }
+
 
     private void inITUI() {
         listview = findViewById(R.id.listview);

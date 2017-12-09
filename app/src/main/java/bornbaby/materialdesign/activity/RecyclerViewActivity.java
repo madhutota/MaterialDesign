@@ -7,21 +7,19 @@ import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.TypedValue;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 
+import org.json.JSONObject;
+
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
 
 import bornbaby.materialdesign.R;
 import bornbaby.materialdesign.Utils.ApiConfiguration;
@@ -40,9 +38,6 @@ public class RecyclerViewActivity extends BaseActivity implements JSONResult {
     int[] covers;
 
     private AlbumsAdapter albumsAdapter;
-
-
-
 
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -65,9 +60,6 @@ public class RecyclerViewActivity extends BaseActivity implements JSONResult {
         }*/
 
 
-
-
-
         try {
             Glide.with(this).load(R.drawable.lions).into((ImageView) findViewById(R.id.backdrop));
         } catch (Exception e) {
@@ -83,24 +75,21 @@ public class RecyclerViewActivity extends BaseActivity implements JSONResult {
         recycler_view.setItemAnimator(new DefaultItemAnimator());
 
 
-
-
         albumsAdapter = new AlbumsAdapter(albumList, this);
         recycler_view.setAdapter(albumsAdapter);
-
-
 
 
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     private void getWeatherData() {
-        if (weatherTask != null){
+        if (weatherTask != null) {
             weatherTask.cancel(true);
         }
 
-        weatherTask = new JSONTask(this,this);
+        weatherTask = new JSONTask(this, this);
         weatherTask.setMethod(JSONTask.METHOD.GET);
+        weatherTask.setCode(5);
         weatherTask.setServerUrl(ApiConfiguration.URL);
         weatherTask.setErrorMessage(ApiConfiguration.ERROR_RESPONSE_CODE);
         weatherTask.setConnectTimeout(ApiConfiguration.TIMEOUT);
@@ -142,8 +131,12 @@ public class RecyclerViewActivity extends BaseActivity implements JSONResult {
 
     @Override
     public void successJSONResult(int code, Object result) {
+        if (code == 5) {
 
-        Utility.showLog("result","result  >>>>>>>"+result);
+            JSONObject jsonObject = (JSONObject) result;
+
+            Utility.showLog("result", "result  >>>>>>>" + result);
+        }
 
     }
 
